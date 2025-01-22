@@ -10,3 +10,6 @@ gem "rake", "~> 13.0"
 gem "rspec", "~> 3.0"
 
 gem "rubocop", "~> 1.21"
+
+gem "ctf-party", "~> 3.0"
+gem "activerecord", "~> 6.0"
