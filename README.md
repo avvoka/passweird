@@ -15,8 +15,16 @@ If bundler is not being used to manage dependencies, install the gem by executin
     $ gem install passweird
 
 ## Usage
+### Prerequisite
+In a rails environment, run this migration script to automatically generate the required table
 
-TODO: Write usage instructions here
+    $ bin/rails generate migration CreatePassweirdBlacklistedTerms term:string:index
+
+Otherwise, run these SQL commands in your database to generate the table manually
+
+    $ CREATE TABLE `passweird_blacklisted_terms` (`id` int(11) auto_increment PRIMARY KEY, `term` varchar(255) NOT NULL, `created_at` datetime, `updated_at` datetime);
+
+    $ CREATE INDEX index_passweird_blacklisted_terms_on_term ON passweird_blacklisted_terms (term);
 
 ## Development
 
