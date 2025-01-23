@@ -34,17 +34,17 @@ module Passweird
       @blacklisted_terms ||= BlacklistedTerm.where("LOWER(term) IN ?", possible_terms)
     end
 
-    # Generates all possible terms from substrings and leet speak conversions
+    # Generates all possible terms from substrings and leet speak equivalents
     #
     # @return [Array<String>] an array of unique possible terms
     def possible_terms
-      @possible_terms ||= (substrings + leet_speak_substrings).uniq
+      @possible_terms ||= (substrings + unleeted_substrings).uniq
     end
 
     private
 
-    def leet_speak_substrings
-      @leet_speak_substrings ||= LeetSpeak.convert_all(substrings)
+    def unleeted_substrings
+      @unleeted_substrings ||= LeetSpeak.unleet_all(substrings)
     end
 
     def substrings
