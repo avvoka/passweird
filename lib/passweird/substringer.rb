@@ -11,6 +11,10 @@ module Passweird
   class Substringer
     attr_reader :root_string
 
+    def self.substrings(root_string, min_length: 3)
+      new(root_string).substrings(min_length: min_length)
+    end
+
     def initialize(root_string)
       raise ArgumentError, "root_string must be a String" unless root_string.is_a?(String)
 
