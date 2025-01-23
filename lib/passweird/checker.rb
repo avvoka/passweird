@@ -24,7 +24,7 @@ module Passweird
     #
     # @return [Boolean] true if the password is blacklisted, false otherwise
     def blacklisted?
-      @blacklisted ||= BlacklistedTerm.exists?(term: possible_terms)
+      @blacklisted ||= BlacklistedTerm.where("LOWER(term) IN ?", possible_terms).exists?
     end
 
     # Retrieves the blacklisted terms that match the possible terms
