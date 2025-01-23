@@ -31,7 +31,7 @@ module Passweird
     #
     # @return [ActiveRecord::Relation] a collection of blacklisted terms
     def blacklisted_terms
-      @blacklisted_terms ||= BlacklistedTerm.where(term: possible_terms)
+      @blacklisted_terms ||= BlacklistedTerm.where("LOWER(term) IN ?", possible_terms)
     end
 
     # Generates all possible terms from substrings and leet speak conversions
