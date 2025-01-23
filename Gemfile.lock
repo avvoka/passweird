@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    passweird (0.1.1)
+    passweird (0.1.2)
       activerecord (~> 6.0)
 
 GEM
