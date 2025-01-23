@@ -29,8 +29,14 @@ module Passweird
       raise ArgumentError, "min_length must be an Integer" unless min_length.is_a?(Integer)
       raise ArgumentError, "min_length must be greater than 0" if min_length <= 0
 
-      return [] if root_string.length < min_length
+      return [root_string] if root_string.length < min_length
 
+      ([root_string] + get_substrings(min_length)).uniq
+    end
+
+    private
+
+    def get_substrings(min_length)
       (0..root_string.length - min_length).flat_map do |start|
         (min_length..root_string.length - start).map do |length|
           root_string[start, length]
