@@ -12,4 +12,7 @@ gem "rspec", "~> 3.0"
 gem "rubocop", "~> 1.21"
 
 gem "activerecord", "~> 6.0"
+
 gem "sqlite3", "~> 1.4", ">= 1.4.2"
+
+gem "database_cleaner", "~> 2.1"

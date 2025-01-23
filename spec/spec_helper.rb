@@ -2,8 +2,10 @@
 
 require "passweird"
 require "active_record"
+require "database_cleaner/active_record"
 
 ActiveRecord::Base.establish_connection(adapter: "sqlite3", database: ":memory:")
+DatabaseCleaner.strategy = :truncation
 
 RSpec.configure do |config|
   config.before(:suite) do
@@ -14,6 +16,10 @@ RSpec.configure do |config|
         t.timestamps
       end
     end
+  end
+
+  config.before(:each) do
+    DatabaseCleaner.clean
   end
 
   config.after(:suite) do
