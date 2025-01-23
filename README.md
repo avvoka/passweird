@@ -14,7 +14,7 @@ The blacklist is managed in the database through [Active Record](https://guides.
 
     $ Passweird::BlacklistedTerm.create(term: "banned-term") # Add to blacklist
 
-There is no further set up needed if within a Rails application, otherwise you need to establish the connection with the database yourself; see [docs](https://api.rubyonrails.org/classes/ActiveRecord/ConnectionHandling.html#method-i-establish_connection).
+There is no further set up needed if within a [Ruby on Rails](https://guides.rubyonrails.org) application, otherwise you need to establish the connection with the database yourself; see [docs](https://api.rubyonrails.org/classes/ActiveRecord/ConnectionHandling.html#method-i-establish_connection).
 
 ## Installation
 
