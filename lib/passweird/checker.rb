@@ -24,24 +24,28 @@ module Passweird
     #
     # @return [Boolean] true if the password is blacklisted, false otherwise
     def blacklisted?
-      @blacklisted ||= BlacklistedTerm.where("LOWER(term) IN ?", possible_terms).exists?
+      @blacklisted ||= BlacklistedTerm.where(term: possible_terms).exists?
     end
 
     # Retrieves the blacklisted terms that match the possible terms
     #
     # @return [ActiveRecord::Relation] a collection of blacklisted terms
     def blacklisted_terms
-      @blacklisted_terms ||= BlacklistedTerm.where("LOWER(term) IN ?", possible_terms)
+      @blacklisted_terms ||= BlacklistedTerm.where(term: possible_terms)
     end
 
     # Generates all possible terms from substrings and leet speak equivalents
     #
     # @return [Array<String>] an array of unique possible terms
     def possible_terms
-      @possible_terms ||= (substrings + unleeted_substrings).uniq
+      @possible_terms ||= all_substring_case_permutations.uniq
     end
 
     private
+
+    def all_substring_case_permutations
+      @all_substring_case_permutations ||= substrings + unleeted_substrings + downcased_substrings + upcased_substrings
+    end
 
     def unleeted_substrings
       @unleeted_substrings ||= LeetSpeak.unleet_all(substrings)
@@ -49,6 +53,14 @@ module Passweird
 
     def substrings
       @substrings ||= Substringer.substrings(password)
+    end
+
+    def downcased_substrings
+      @downcased_substrings ||= substrings.map(&:downcase)
+    end
+
+    def upcased_substrings
+      @upcased_substrings ||= substrings.map(&:upcase)
     end
   end
 end
