@@ -1,8 +1,20 @@
 # Passweird
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/passweird`. To experiment with that code, run `bin/console` for an interactive prompt.
+A library to assess password security by giving the ability to check it against an arbitrary blacklist
 
-TODO: Delete this and the text above, and describe your gem
+### Example Usage
+
+    $ Passweird::Checker.blacklisted?("my-password")
+
+This will check if the given string, Its substrings or leet speak equivalents are registered in the blacklist.
+
+### Registering a blacklisted term
+
+The blacklist is managed in the database through [Active Record](https://guides.rubyonrails.org/active_record_basics.html).
+
+    $ Passweird::BlacklistedTerm.create(term: "banned-term") # Add to blacklist
+
+There is no further set up needed if within a Rails application, otherwise you need to establish the connection with the database yourself; see [docs](https://api.rubyonrails.org/classes/ActiveRecord/ConnectionHandling.html#method-i-establish_connection).
 
 ## Installation
 
