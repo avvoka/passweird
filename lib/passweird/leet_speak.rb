@@ -58,6 +58,10 @@ module Passweird
       given_string.gsub(/[#{LEET_CHAR_EQUIVALENTS.keys.join}]/, LEET_CHAR_EQUIVALENTS)
     end
 
+    def leet?
+      given_string != leet
+    end
+
     # Converts the leet speak string back to normal text
     #
     # @return [String] the converted normal text string
