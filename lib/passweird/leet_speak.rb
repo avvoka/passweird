@@ -110,7 +110,7 @@ module Passweird
     end
 
     def leet?
-      given_string == leet
+      given_string != leet
     end
 
     # Converts the leet speak string back to normal text
