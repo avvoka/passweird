@@ -17,19 +17,15 @@ module Passweird
       "A" => "4",
       "B" => "8",
       "C" => "(",
-      "D" => "|)",
       "E" => "€",
-      "F" => "|=",
+      "F" => "ƒ",
       "G" => "6",
       "H" => "#",
       "I" => "1",
-      "K" => "|<",
-      "L" => "1",
-      "M" => "^^",
+      "LL" => "11",
       "N" => "И",
       "O" => "0",
-      "P" => "|>",
-      "R" => "|2",
+      "R" => "Я",
       "S" => "5",
       "T" => "7",
       "U" => "U",
@@ -37,6 +33,30 @@ module Passweird
       "Y" => "¥",
       "Z" => "2"
     }.freeze
+
+    # Reference: https://en.wikipedia.org/wiki/Leet#Table_of_leet-speak_substitutes_for_normal_letters
+    # Excluded leet speak equivalents that has 3 or more characters
+    LEET_TO_ALPHABET = {
+      "4" => "A", "@" => "A", "Д" => "A",
+      "8" => "B", "ß" => "B",
+      "(" => "C", "{" => "C",
+      "3" => "E", "£" => "E", "€" => "E",
+      "ƒ" => "F",
+      "6" => "G", "9" => "G",
+      "#" => "H",
+      "1" => "I", "!" => "I",
+      "11" => "LL",
+      "И" => "N", "ท" => "N",
+      "0" => "O", "Ø" => "O",
+      "Я" => "R",
+      "5" => "S", "$" => "S",
+      "7" => "T",
+      "พ" => "W", "₩" => "W", "ω" => "W",
+      "><" => "X", "×" => "X",
+      "¥" => "Y",
+      "2" => "Z"
+    }.freeze
+
 
     def self.leet(given_string)
       new(given_string).leet
@@ -83,7 +103,7 @@ module Passweird
     #
     # @return [String] the converted normal text string
     def unleeted
-      given_string.gsub(/[#{LEET_CHAR_EQUIVALENTS.values.join}]/, LEET_CHAR_EQUIVALENTS.invert)
+      given_string.upcase.gsub(/[#{LEET_TO_ALPHABET.keys.join}]/, LEET_TO_ALPHABET)
     end
   end
 end
