@@ -29,6 +29,10 @@ module Passweird
       new(given_string).leet
     end
 
+    def self.leet?(given_string)
+      new(given_string).leet?
+    end
+
     def self.leet_all(array_of_strings)
       raise ArgumentError, "array_of_strings must be an Array" unless array_of_strings.is_a?(Array)
 
@@ -59,7 +63,7 @@ module Passweird
     end
 
     def leet?
-      given_string != leet
+      given_string == leet
     end
 
     # Converts the leet speak string back to normal text
