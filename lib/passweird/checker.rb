@@ -38,33 +38,17 @@ module Passweird
     #
     # @return [Array<String>] an array of unique possible terms
     def possible_terms
-      @possible_terms ||= all_substring_case_permutations.uniq
+      ([password] + substrings + unleeted_substrings).uniq
     end
 
     private
 
-    def all_substring_case_permutations
-      @all_substring_case_permutations ||= substrings + unleeted_substrings + downcased_substrings + upcased_substrings
-    end
-
-    def all_substrings
-      @all_substrings ||= (substrings + unleeted_substrings).uniq
+    def substrings
+      @substrings ||= Substringer.substrings(password.downcase)
     end
 
     def unleeted_substrings
       @unleeted_substrings ||= LeetSpeak.unleet_all(substrings)
-    end
-
-    def substrings
-      @substrings ||= Substringer.substrings(password)
-    end
-
-    def downcased_substrings
-      @downcased_substrings ||= all_substrings.map(&:downcase)
-    end
-
-    def upcased_substrings
-      @upcased_substrings ||= all_substrings.map(&:upcase)
     end
   end
 end

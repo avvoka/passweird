@@ -53,22 +53,22 @@ module Passweird
     # Reference: https://en.wikipedia.org/wiki/Leet#Table_of_leet-speak_substitutes_for_normal_letters
     # Excluded leet speak equivalents that has 3 or more characters
     LEET_TO_ALPHABET = {
-      "4" => "A", "@" => "A", "Д" => "A",
-      "8" => "B", "ß" => "B",
-      "(" => "C", "{" => "C",
-      "3" => "E", "£" => "E", "€" => "E",
-      "ƒ" => "F",
-      "6" => "G", "9" => "G",
-      "#" => "H",
-      "1" => "I", "!" => "I",
-      "И" => "N", "ท" => "N",
-      "0" => "O", "Ø" => "O",
-      "Я" => "R",
-      "5" => "S", "$" => "S",
-      "7" => "T",
-      "พ" => "W", "₩" => "W", "ω" => "W",
-      "¥" => "Y",
-      "2" => "Z"
+      "4" => "a", "@" => "a", "Д" => "a",
+      "8" => "b", "ß" => "b",
+      "(" => "c", "{" => "c",
+      "3" => "e", "£" => "e", "€" => "e",
+      "ƒ" => "f",
+      "6" => "g", "9" => "g",
+      "#" => "h",
+      "1" => "i", "!" => "i",
+      "И" => "n", "ท" => "n",
+      "0" => "o", "Ø" => "o",
+      "Я" => "r",
+      "5" => "s", "$" => "s",
+      "7" => "t",
+      "พ" => "w", "₩" => "w", "ω" => "w",
+      "¥" => "y",
+      "2" => "z"
     }.freeze
 
 
@@ -117,7 +117,7 @@ module Passweird
     #
     # @return [String] the converted normal text string
     def unleet
-      given_string.upcase.gsub(/[#{LEET_TO_ALPHABET.keys.join}]/, LEET_TO_ALPHABET)
+      given_string.gsub(/[#{LEET_TO_ALPHABET.keys.join}]/, LEET_TO_ALPHABET)
     end
   end
 end
