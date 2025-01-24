@@ -13,16 +13,29 @@ module Passweird
   class LeetSpeak
     attr_reader :given_string
 
-    LEET_CHAR_EQUIVALENTS = {
-      "T" => "7", "t" => "7",
-      "E" => "3", "e" => "3",
-      "I" => "1", "i" => "1",
-      "L" => "1", "l" => "1",
-      "O" => "0", "o" => "0",
-      "S" => "5", "s" => "5",
-      "A" => "4", "a" => "4",
-      "G" => "6", "g" => "6",
-      "B" => "8", "b" => "8"
+    ALPHABET_TO_SIMPLE_LEET = {
+      "A" => "4",
+      "B" => "8",
+      "C" => "(",
+      "D" => "|)",
+      "E" => "€",
+      "F" => "|=",
+      "G" => "6",
+      "H" => "#",
+      "I" => "1",
+      "K" => "|<",
+      "L" => "1",
+      "M" => "^^",
+      "N" => "И",
+      "O" => "0",
+      "P" => "|>",
+      "R" => "|2",
+      "S" => "5",
+      "T" => "7",
+      "U" => "U",
+      "X" => "×",
+      "Y" => "¥",
+      "Z" => "2"
     }.freeze
 
     def self.leet(given_string)
@@ -59,7 +72,7 @@ module Passweird
     #
     # @return [String] the converted leet speak string
     def leet
-      given_string.gsub(/[#{LEET_CHAR_EQUIVALENTS.keys.join}]/, LEET_CHAR_EQUIVALENTS)
+      given_string.upcase.gsub(/[#{ALPHABET_TO_SIMPLE_LEET.keys.join}]/, ALPHABET_TO_SIMPLE_LEET)
     end
 
     def leet?
