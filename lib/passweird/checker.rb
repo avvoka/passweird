@@ -47,6 +47,10 @@ module Passweird
       @all_substring_case_permutations ||= substrings + unleeted_substrings + downcased_substrings + upcased_substrings
     end
 
+    def all_substrings
+      @all_substrings ||= (substrings + unleeted_substrings).uniq
+    end
+
     def unleeted_substrings
       @unleeted_substrings ||= LeetSpeak.unleet_all(substrings)
     end
@@ -56,11 +60,11 @@ module Passweird
     end
 
     def downcased_substrings
-      @downcased_substrings ||= substrings.map(&:downcase)
+      @downcased_substrings ||= all_substrings.map(&:downcase)
     end
 
     def upcased_substrings
-      @upcased_substrings ||= substrings.map(&:upcase)
+      @upcased_substrings ||= all_substrings.map(&:upcase)
     end
   end
 end

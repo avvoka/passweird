@@ -4,11 +4,11 @@ RSpec.describe Passweird::Checker do
   describe ".blacklisted?" do
     describe "when the password is blacklisted" do
       before do
-        Passweird::BlacklistedTerm.create(term: "word")
+        Passweird::BlacklistedTerm.create(term: "pass")
       end
 
       it "returns true" do
-        expect(described_class.blacklisted?("word")).to be true
+        expect(described_class.blacklisted?("pass")).to be true
       end
 
       describe "where a substring of the password is blacklisted" do
