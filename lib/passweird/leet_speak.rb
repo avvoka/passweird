@@ -10,8 +10,12 @@ module Passweird
   #   # => "3x4mpl3"
   #   normal_string = leet_speak.unleet
   #   # => "example"
+
+  # TODO:
+  # - Add a way to define custom leet speak equivalents and produce N-grammed hash for conversions (N-gram for characters with more than 1 possible equivalent)
   class LeetSpeak
     attr_reader :given_string
+    attr_accessor :alphabet_to_leet, :leet_to_alphabet
 
     ALPHABET_TO_SIMPLE_LEET = {
       # Uppercase
@@ -71,6 +75,15 @@ module Passweird
       "2" => "z"
     }.freeze
 
+    def initialize(given_string, alphabet_to_leet: ALPHABET_TO_SIMPLE_LEET, leet_to_alphabet: LEET_TO_ALPHABET)
+      raise ArgumentError, "given_string must be a String" unless given_string.is_a?(String)
+      raise ArgumentError, "alphabet_to_leet must be a Hash" unless alphabet_to_leet.is_a?(Hash)
+      raise ArgumentError, "leet_to_alphabet must be a Hash" unless leet_to_alphabet.is_a?(Hash)
+
+      @given_string = given_string
+      @alphabet_to_leet = alphabet_to_leet
+      @leet_to_alphabet = leet_to_alphabet
+    end
 
     def self.leet(given_string)
       new(given_string).leet
@@ -94,12 +107,6 @@ module Passweird
       raise ArgumentError, "array_of_strings must be an Array" unless array_of_strings.is_a?(Array)
 
       array_of_strings.map { |string| unleet(string) }
-    end
-
-    def initialize(given_string)
-      raise ArgumentError, "given_string must be a String" unless given_string.is_a?(String)
-
-      @given_string = given_string
     end
 
     # Converts the given_string to leet speak
