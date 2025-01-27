@@ -117,6 +117,9 @@ module Passweird
     end
 
     def leet?
+      return false if all_numbers?(given_string)
+      return false if all_letters?(given_string)
+
       given_string != leet
     end
 
@@ -125,6 +128,16 @@ module Passweird
     # @return [String] the converted normal text string
     def unleet
       given_string.gsub(/[#{LEET_TO_ALPHABET.keys.join}]/, LEET_TO_ALPHABET)
+    end
+
+    private
+
+    def all_numbers?(string)
+      string.match(/\D/).nil?
+    end
+
+    def all_letters?(string)
+      string.match(/\d/).nil?
     end
   end
 end
