@@ -4,7 +4,9 @@ module Passweird
   module Leet
     # This contains cipher to better translate leet with multiple adjacent I's and L's
     # These equivalents are proccessed through N-gram analysis of
-    # english words from http://wordlist.aspell.net/
+    # english words from http://wordlist.aspell.net/.
+    # Explanation: Preprocessed cipher was considered vs deciphering using N-gram logic
+    # in favor of speed and less complexity
     class ExtendedCipher # rubocop:disable Metrics/ClassLength
       CIPHER = {
         "M1111117" => "MILLILIT",

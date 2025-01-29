@@ -2,14 +2,14 @@
 
 module Passweird
   module Leet
-    # The LeetSpeak class is responsible for converting a given string
+    # The Translate class is responsible for converting a given string
     # into leet speak (1337 5p34k) and converting it back to normal text.
     #
     # Example usage:
-    #   leet_speak = Passweird::LeetSpeak.new("example")
-    #   leet_string = leet_speak.leet
+    #   translator = Passweird::Leet::Translate.new("example")
+    #   leet_string = translator.leet
     #   # => "3x4mpl3"
-    #   normal_string = leet_speak.unleet
+    #   normal_string = translator.unleet
     #   # => "example"
     class Translate
       attr_reader :given_string
@@ -28,9 +28,9 @@ module Passweird
       }.freeze
 
       # Pattern to check if string is either:
-      # - String + Numbers
-      # - String + Special Characters
-      # - String + Numbers + Special Characters
+      # - Letters + Numbers
+      # - Letters + Special Characters
+      # - Letters + Numbers + Special Characters
       MIXED_CHAR_REGEX = /^(?=.*[a-zA-Z])(?=.*[\d\W]).+$/.freeze
 
       def self.leet(given_string)
