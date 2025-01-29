@@ -13,7 +13,6 @@ module Passweird
     #   # => "example"
     class Translate
       attr_reader :given_string
-      attr_accessor :alphabet_to_leet, :leet_to_alphabet
 
       CIPHER = {
         "4" => "A",
