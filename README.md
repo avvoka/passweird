@@ -30,7 +30,7 @@ If bundler is not being used to manage dependencies, install the gem by executin
 ### Prerequisite
 In a rails environment, run this migration script to automatically generate the required table
 
-    $ bin/rails generate migration CreatePassweirdBlacklistedTerms term:string:index
+    $ bin/rails generate migration CreatePassweirdBlacklistedTerms term:string:uniq comment:string
 
 Otherwise, run these SQL commands in your database to generate the table manually
 
