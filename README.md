@@ -26,8 +26,7 @@ If bundler is not being used to manage dependencies, install the gem by executin
 
     $ gem install passweird
 
-## Usage
-### Prerequisite
+## Prerequisite
 In a rails environment, run this migration script to automatically generate the required table
 
     $ bin/rails generate migration CreatePassweirdBlacklistedTerms term:string:uniq comment:string
